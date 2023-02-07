@@ -46,3 +46,4 @@
         name: code
         channel: stable
         state: present
+
