@@ -1,8 +1,18 @@
 - name: Config Setup
-  hosts: whatever
+  hosts: all
   become: yes
   tasks:
-    - name: Ansible apt setup 
+    - name: Add OBS Studio repository
+      apt_repository:
+        repo: "ppa:obsproject/obs-studio"
+        state: present
+
+    - name: Add Zotero repository
+      apt_repository:
+        repo: "ppa:retorquere/zotero-deb"
+        state: present
+
+    - name: Ansible apt setup
       register: updatesys
       apt:
         update_cache: yes
@@ -21,4 +31,18 @@
 		      - telnet
 		      - tmux
 		      - wget
+		      - john-the-ripper
+		      - obs-studio
+		      - zotero
+        state: present
+
+    - name: Install Spotify
+      snap:
+        name: spotify
+        state: present
+
+    - name: Install Visual Studio Code
+      snap:
+        name: code
+        channel: stable
         state: present
