@@ -7,18 +7,18 @@
       apt:
         update_cache: yes
         name:
-		      - firefox
-		      - flux
-		      - vagrant
-		      - libimage-exiftool-perl 
-		      - perl-doc
-		      - virtualbox
-		      - vlc
-		      - wireshark
-		      - automake
-		      - openvpn
-		      - postgresql
-		      - telnet
-		      - tmux
-		      - wget
+		- firefox
+		- flux
+		- vagrant
+		- libimage-exiftool-perl 
+		- perl-doc
+		- virtualbox
+		- vlc
+		- wireshark
+		- automake
+		- openvpn
+		- postgresql
+		- telnet
+		- tmux
+		- wget
         state: present
