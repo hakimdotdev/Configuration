@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+
+  config.vm.provision "file", source: "vagsetup.sh", destination: "/home/vagrant/vagsetup.sh"
+  config.vm.provision "file", source: "software", destination: "/home/vagrant/software"
+  config.vm.provision "file", source: ".tmux.conf", destination: "/home/vagrant/.tmux.conf"
+  config.vm.provision "file", source: ".bashrc", destination: "/home/vagrant/.bashrc"
+  config.vm.provision "file", source: ".vimrc", destination: "/home/vagrant/.vimrc"
+
+      config.vm.provision "shell", inline: <<-SHELL
+        sudo chmod +x vagsetup.sh
+        sudo ./vagsetup.sh
+      SHELL
+end

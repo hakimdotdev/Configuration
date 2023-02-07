@@ -1,0 +1,24 @@
+- name: Config Setup
+  hosts: whatever
+  become: yes
+  tasks:
+    - name: Ansible apt setup 
+      register: updatesys
+      apt:
+        update_cache: yes
+        name:
+		      - firefox
+		      - flux
+		      - vagrant
+		      - libimage-exiftool-perl 
+		      - perl-doc
+		      - virtualbox
+		      - vlc
+		      - wireshark
+		      - automake
+		      - openvpn
+		      - postgresql
+		      - telnet
+		      - tmux
+		      - wget
+        state: present
