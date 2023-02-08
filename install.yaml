@@ -18,7 +18,7 @@
         update_cache: yes
         name:
 		      - firefox
-		      - flux
+		      - redshift
 		      - vagrant
 		      - libimage-exiftool-perl 
 		      - perl-doc
@@ -29,11 +29,17 @@
 		      - openvpn
 		      - postgresql
 		      - telnet
+          - pidgin
 		      - tmux
+          - vim
 		      - wget
 		      - john-the-ripper
 		      - obs-studio
 		      - zotero
+          - gnome-shell-extensions 
+          - gnome-shell-extension-manager
+          - gir1.2-gda-5.0
+          - gir1.2-gsound-1.0
         state: present
 
     - name: Install Spotify
