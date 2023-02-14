@@ -1,54 +1,46 @@
 - name: Config Setup
-  hosts: all
+  hosts: localhost
   become: yes
   tasks:
-    - name: Add OBS Studio repository
-      apt_repository:
-        repo: "ppa:obsproject/obs-studio"
-        state: present
+  - name: Add OBS Studio repo
+    apt_repository:
+      repo: "ppa:obsproject/obs-studio"
+      state: present
 
-    - name: Add Zotero repository
-      apt_repository:
-        repo: "ppa:retorquere/zotero-deb"
-        state: present
+  - name: Install Packages with apt
+    apt:
+      pkg:
+        - redshift
+        - vagrant
+        - libimage-exiftool-perl
+        - perl-doc
+        - virtualbox
+        - vlc
+        - wireshark
+        - nmap
+        - obs-studio
+        - openvpn
+        - telnet
+        - pidgin
+        - tmux
+        - vim
+        - wget
+        - gnome-shell-extensions
+        - gnome-shell-extension-manager
+        - gir1.2-gda-5.0
+        - gir1.2-gsound-1.0
+        - keepassxc
+        - thunderbird
 
-    - name: Ansible apt setup
-      register: updatesys
-      apt:
-        update_cache: yes
-        name:
-		      - firefox
-		      - redshift
-		      - vagrant
-		      - libimage-exiftool-perl 
-		      - perl-doc
-		      - virtualbox
-		      - vlc
-		      - wireshark
-		      - automake
-		      - openvpn
-		      - postgresql
-		      - telnet
-          - pidgin
-		      - tmux
-          - vim
-		      - wget
-		      - obs-studio
-		      - zotero
-          - gnome-shell-extensions 
-          - gnome-shell-extension-manager
-          - gir1.2-gda-5.0
-          - gir1.2-gsound-1.0
-        state: present
-
-    - name: Install Spotify
-      snap:
-        name: spotify
-        state: present
-
-    - name: Install Visual Studio Code
-      snap:
-        name: code
-        channel: stable
-        state: present
-
+      state: latest
+      update_cache: true
+  - name: Install Snaps
+    community.general.snap:
+      name:
+        - brave
+        - codium
+        - slack
+        - metasploit-framework
+        - spotify
+        - zotero-snap
+        - docker
